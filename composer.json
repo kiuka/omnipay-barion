@@ -1,0 +1,25 @@
+{
+    "name": "kiuka/omnipay-barion",
+    "description": "Barion gateway for Omnipay",
+    "homepage": "https://github.com/kiuka/omnipay-barion",
+    "autoload": {
+        "psr-4": { "Omnipay\\Barion\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "^2.5"
+    },
+    "require-dev": {
+        "omnipay/tests": "^2.0"
+    },
+    "authors": [
+        {
+            "name": "kiuka",
+            "email": ""
+        }
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
