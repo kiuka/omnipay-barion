@@ -154,7 +154,9 @@ class PurchaseRequest extends AbstractRequest
 				->send()
 				->json();
 		} catch (ClientErrorResponseException $e) {
-			$httpResponse = ['error' => true];
+			$httpResponse = [
+				'error'   => true,
+				'message' => $e->getMessage()];
 		}
 
 		return $this->response = new PurchaseResponse($this, $httpResponse);
