@@ -146,7 +146,7 @@ class PurchaseRequest extends AbstractRequest
 					'POST',
 					$this->getEndpoint(),
 					['Content-type' => 'application/json'],
-					\GuzzleHttp\json_encode($data),
+					json_encode($data),
 					['verify' => __DIR__ . '/../certs/cacert.pem']
 				);
 
@@ -486,4 +486,12 @@ class PurchaseRequest extends AbstractRequest
 	{
 		return $this->getParameter('locale');
 	}
+
+    /**
+     * @param $negativeAmountAllowed
+     */
+	public function setNegativeAmountAllowed($negativeAmountAllowed)
+    {
+        $this->negativeAmountAllowed = $negativeAmountAllowed;
+    }
 }
