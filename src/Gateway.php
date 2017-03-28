@@ -1,9 +1,10 @@
 <?php
 namespace Omnipay\Barion;
 
+use League\Omnipay\Common\AbstractGateway;
+use League\Omnipay\Common\Message\AbstractRequest;
+use Omnipay\Barion\Http\GuzzleClient;
 use Omnipay\Barion\Message\PurchaseRequest;
-use Omnipay\Common\AbstractGateway;
-use Omnipay\Common\Message\AbstractRequest;
 
 class Gateway extends AbstractGateway
 {
@@ -44,6 +45,16 @@ class Gateway extends AbstractGateway
 	{
 		return $this->createRequest(PurchaseRequest::class, $options);
 	}
+
+    /**
+     * @inheritdoc
+     */
+    protected function createRequest($class, array $parameters)
+    {
+        $obj = new $class(new GuzzleClient(), $this->httpRequest);
+
+        return $obj->initialize(array_replace($this->getParameters(), $parameters));
+    }
 
 	/**
 	 * @param $value

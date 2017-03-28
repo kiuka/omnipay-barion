@@ -1,9 +1,9 @@
 <?php
 namespace Omnipay\Barion;
 
-use Omnipay\Common\ItemInterface;
+use League\Omnipay\Common\ItemInterface;
 
-class ItemBag extends \Omnipay\Common\ItemBag
+class ItemBag extends \League\Omnipay\Common\ItemBag
 {
 	/**
 	 * Add an item to the bag

@@ -1,7 +1,7 @@
 <?php
 namespace Omnipay\Barion;
 
-class Item extends \Omnipay\Common\Item
+class Item extends \League\Omnipay\Common\Item
 {
 	/**
 	 * @param $value
