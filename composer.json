@@ -6,10 +6,9 @@
         "psr-4": { "Omnipay\\Barion\\" : "src/" }
     },
     "require": {
-        "omnipay/common": "^2.5"
+        "omnipay/common": "3.0.x-dev"
     },
     "require-dev": {
-        "omnipay/tests": "^2.0"
     },
     "authors": [
         {

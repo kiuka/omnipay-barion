@@ -1,7 +1,9 @@
 <?php
 namespace Omnipay\Barion;
 
+use Omnipay\Barion\Message\PurchaseRequest;
 use Omnipay\Common\AbstractGateway;
+use Omnipay\Common\Message\AbstractRequest;
 
 class Gateway extends AbstractGateway
 {
@@ -34,14 +36,13 @@ class Gateway extends AbstractGateway
 		];
 	}
 
-	/**
-	 * @param array $parameters
-	 *
-	 * @return \Omnipay\Barion\Message\PurchaseRequest
-	 */
-	public function purchase(array $parameters = [])
+    /**
+     * @param array $options
+     * @return AbstractRequest
+     */
+    public function purchase(array $options = [])
 	{
-		return $this->createRequest('\Omnipay\Barion\Message\PurchaseRequest', $parameters);
+		return $this->createRequest(PurchaseRequest::class, $options);
 	}
 
 	/**
