@@ -312,7 +312,7 @@ class PurchaseRequest extends AbstractRequest
      */
     public function getGuestCheckOut()
     {
-        return $this->getParameter('guestCheckOut');
+        return $this->getParameter('guestCheckOut') ? 'true' : 'false';
     }
 
     /**
