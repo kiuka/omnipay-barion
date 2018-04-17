@@ -147,7 +147,7 @@ class PurchaseRequest extends AbstractRequest
                 \json_encode($data)
             );
 
-            $httpResponse = (array) \json_decode($httpRequest->getBody()->getContents());
+            $httpResponse = (array)\json_decode($httpRequest->getBody()->getContents());
         } catch (\Exception $e) {
             $httpResponse = [
                 'error' => true,
@@ -312,7 +312,7 @@ class PurchaseRequest extends AbstractRequest
      */
     public function getGuestCheckOut()
     {
-        return $this->getParameter('guestCheckOut');
+        return $this->getParameter('guestCheckOut') ? 'true' : 'false';
     }
 
     /**
@@ -403,12 +403,24 @@ class PurchaseRequest extends AbstractRequest
         $this->setParameter('redirectUrl', $value);
     }
 
+    protected function fixUrl($url, $defaultScheme = 'https')
+    {
+        if (!parse_url($url, PHP_URL_SCHEME)) {
+            $url = $defaultScheme . '://' . preg_replace('%^:?//%', '', $url);
+        }
+
+        return $url;
+    }
+
     /**
      * @return mixed
      */
     public function getRedirectUrl()
     {
-        return $this->getParameter('redirectUrl');
+        $redirectUrl = $this->getParameter('redirectUrl');
+        $redirectUrl = $this->fixUrl($redirectUrl);
+
+        return $redirectUrl;
     }
 
     /**
@@ -424,7 +436,10 @@ class PurchaseRequest extends AbstractRequest
      */
     public function getCallbackUrl()
     {
-        return $this->getParameter('callbackUrl');
+        $callbackUrl = $this->getParameter('callbackUrl');
+        $callbackUrl = $this->fixUrl($callbackUrl);
+
+        return $callbackUrl;
     }
 
     /**
